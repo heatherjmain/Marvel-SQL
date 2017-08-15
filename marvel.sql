@@ -165,21 +165,32 @@ SELECT name FROM people;
 
 -- 3.Oops! Someone at CodeClan spelled Alice's name wrong! Change it to reflect the proper spelling (change 'Alise Rees' to 'Alice Rees').
 UPDATE people SET name = 'Alice Rees' WHERE name = 'Alise Rees';
+-- or
+-- UPDATE people SET name = 'Alice Rees' WHERE id = 1;
 
 -- 4. Return ONLY your name from the 'people' table.
 SELECT name FROM people WHERE name = 'Heather Rae';
+-- or
+-- SELECT name FROM people WHERE id = 13;
 
 -- 5. The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.
 DELETE FROM movies WHERE title = 'Batman Begins';
+-- or
+-- DELETE FROM movies WHERE id = 10;
 
 -- 6. Create a new entry in the 'people' table with the name of one of the instructors.
 INSERT INTO people (name) VALUES ('Rick Henry');
 
 -- 7. Craig Morton has decided to hijack our movie evening, Remove him from the table of people.
 DELETE FROM people WHERE name = 'Craig Morton';
+-- or
+-- DELETE FROM people WHERE name LIKE '%Criag%';
+-- wildcards can be used with like to remove more than one person
 
 -- 8. Somehow the list of people includes someone just named 'David'. Change our mystery guest's name to 'David 5'
 UPDATE people SET name = 'David 5' WHERE name = 'David';
+-- or
+-- UPDATE people SET name = 'David 5' WHERE id = 11;
 
 -- 9. The cinema has just heard that they will be holding an exclusive midnight showing of 'Spiderman Homecoming'!! Create a new entry in the 'movies' table to reflect this.
 INSERT INTO movies (title, year, show_time) VALUES ('Spiderman Homecoming', 2017, '00:00');
@@ -192,3 +203,6 @@ UPDATE movies SET show_time = '18:30' WHERE title = 'Guardians of the Galaxy';
 --
 -- 1. Research how to delete multiple entries from your table in a single command.
 DELETE FROM movies WHERE year < 2015;
+-- or
+-- DELETE FROM movies WHERE id IN (1, 2, 3, 4, 5)
+-- DELETE FROM movies WHERE id BETWEEN 1 AND 5;
